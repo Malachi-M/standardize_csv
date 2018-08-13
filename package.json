@@ -1,0 +1,28 @@
+{
+  "name": "react-transform-csv",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ajv": "^6.5.2",
+    "csvtojson": "^2.0.8",
+    "json2csv": "^4.2.1",
+    "react": "^16.4.2",
+    "react-csv-creator": "^1.1.0",
+    "react-csv-reader": "^0.3.2",
+    "react-dom": "^16.4.2",
+    "react-dropzone": "^4.3.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.2",
+    "styled-material-components": "0.0.55-0",
+    "ts-react-json-table": "^0.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
