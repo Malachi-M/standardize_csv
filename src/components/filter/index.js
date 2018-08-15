@@ -51,10 +51,10 @@ export default ({
               <StyledListItem key={idx}>
                 <Checkbox
                   id={`check-${idx}`}
+                  checked={checked[col]}
                   onChange={() => {
                     handleCheck(col)
                   }}
-                  checked={checked[col]}
                 />
                 <label htmlFor={`check-${idx}`}>
                   {col}

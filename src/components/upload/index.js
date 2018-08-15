@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import styled, { css } from 'styled-components'
-import CSVIcon from './csv-icon'
-import ActionBar from './action-bar'
+import CSVIcon from '../icons/csv-icon'
+import ActionBar from '../action-bar'
 
 const StyledSection = styled.section`
   margin: auto;

@@ -9,7 +9,6 @@ import Main from './components/main'
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 const theme = {
-  //maxWidth: '65rem',
   maxWidth: '62vw',
   primary:'#303a52',
   dark_primary: '#081429',
