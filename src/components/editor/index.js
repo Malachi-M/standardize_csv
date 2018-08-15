@@ -86,7 +86,7 @@ export default class Editor extends Component {
         <Table
           data={data}
           columns={columns}
-          height={'72.5vh'}
+          height={'50vh'}
         />
       </React.Fragment>
     )
