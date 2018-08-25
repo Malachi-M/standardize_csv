@@ -1,34 +1,45 @@
 import React, { Component } from 'react'
 import Filter from '../filter'
-import Table from '../table'
-import ActionBar from '../action-bar'
-import DownloadLink from 'react-csv-creator'
 import { Button } from 'styled-material-components'
-import styled from 'styled-components'
-
-const ResetButton = styled(Button)`
-  background-color: ${props => props.theme.warning}
-  color: #fff;
-  margin-right: 1.25em;
-`
+import SingleFile from '../preview/single-file'
+import MultiFile from '../preview/multi-file'
 
 export default class Editor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initialFields: Object.keys(this.props.data[0]),
-      columns: Object.keys(this.props.data[0]),
-      headers: Object.keys(this.props.data[0]).map(field => ({id: field, display: field})),
-      initialData: this.props.data,
-      data: this.props.data
+      initialFields: this.getInitialFields(this.props.data),
+      columns: this.getInitialFields(this.props.data),
+      headers: this.getInitialFields(this.props.data).map(field => ({id: field, display: field})),
+      initialData: this.setInitialData(this.props.data),
+      data: this.setInitialData(this.props.data)
     }
   }
+
+  setInitialData = (data) => {
+    const files = Object.keys(data)
+    console.log('set initial data in Editor', files.length)
+    return (files.length > 1
+      ? []
+      : this.props.data[files])
+  }
+
+  getInitialFields = (data) => (
+    Object.keys(data)
+      .map((file, idx, arr) => data[file]
+        .map(field => Object.keys(field)))
+      .reduce((arr, field) => field
+        .reduce((arr, line) => [...arr, ...line],[])
+      , [])
+      .filter((field, idx, arr) => arr.indexOf(field) === idx)
+    )
 
   resetFields = () => {
     this.setState((prevState, props) => ({
       columns: prevState.initialFields,
       data: prevState.initialData
-    })) 
+    }))
+    this.props.clearAllCheck()
   }
 
   updateFields = fields => {
@@ -52,44 +63,21 @@ export default class Editor extends Component {
   render() {
     const { checked, handleCheck } = this.props
     const { columns, data, headers } = this.state
-
+    const filenames = Object.keys(this.props.data)
     return (
       <React.Fragment>
         <Filter
           updateFields={this.updateFields}
+          resetFields={this.resetFields}
           columns={columns}
           handleCheck={handleCheck}
           checked={checked}
         />
-        <ActionBar end='true'>
-          <ResetButton
-            raised
-            onClick={this.resetFields}
-          >
-            Reset ALL Fields
-          </ResetButton>
-          <DownloadLink 
-            raised
-            accent
-            filename='test.csv'
-            headers={headers}
-            rows={data}
-          >
-            <Button 
-              raised
-              accent
-            >
-              Export CSV
-            </Button>
-          </DownloadLink>
-        </ActionBar>
-        <Table
-          data={data}
-          columns={columns}
-          height={'50vh'}
-        />
+        {filenames.length > 1 
+          ? <MultiFile files={filenames} data={data} headers={headers} />
+          : <SingleFile columns={columns} data={data} headers={headers} filename={filenames}/>
+        }
       </React.Fragment>
     )
   }
 }
-

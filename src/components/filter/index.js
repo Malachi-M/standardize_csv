@@ -1,66 +1,83 @@
 import React from 'react'
 import { Button, Checkbox } from 'styled-material-components'
 import styled from 'styled-components'
+import { StyledFilterSection, StyledList, StyledH1 } from '../styled-components'
+import ActionBar from '../action-bar'
 
-const StyledList = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+const StyledCheckbox = styled(Checkbox)`
+  box-sizing: content-box;
 `
-const StyledListItem = styled.li`
-  flex: 0 1 12.5em;
+const StyledLabel = styled.label`
+  vertical-align: middle;
+`
+const StyledFilterList = styled(StyledList)`
+  margin-top: 1em;
+`
+
+const StyledFilterListItem = styled.li`
+  flex: 0 1 13.5em;
   list-style-type: none;
-  margin: .25em 0 .25em 0;
-`
-const StyledSection = styled.section`
-  padding: 1em;
-  background-color: #fff;
-  margin: 0 auto 1em;
-  border-radius: 2px;
-  max-width: ${props => props.theme.maxWidth};
+  margin: 0;
+  width: 100%;
+  max-width: 11em;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
 `
-const StyledH1 = styled.h1`
-  margin: 0 0 .75em 0;
+
+const ResetButton = styled(Button)`
+  background-color: ${props => props.theme.warning}
+  color: #fff;
+  margin-right: 1.25em;
 `
 
 export default ({
   updateFields,
+  resetFields,
   handleCheck,
   columns,
   checked
 }) => (
-  <StyledSection>
-          <StyledDiv>
-          <StyledH1>Select Fields to Keep</StyledH1>
-          <Button 
-            raised
-            primary
-            dense
-            onClick={() => updateFields(Object.keys(checked))}
-          >
-            Update Fields
-          </Button>
-          </StyledDiv>
-          <StyledList>
-            {columns.map((col, idx) => (
-              <StyledListItem key={idx}>
-                <Checkbox
-                  id={`check-${idx}`}
-                  checked={checked[col]}
-                  onChange={() => {
-                    handleCheck(col)
-                  }}
-                />
-                <label htmlFor={`check-${idx}`}>
-                  {col}
-                </label>
-              </StyledListItem>
-            ))}
-          </StyledList>
-        </StyledSection>
+  <StyledFilterSection>
+    <StyledDiv>
+      <StyledH1>Select Fields to Keep</StyledH1>
+      <ActionBar end='true'>
+        <ResetButton
+          dense
+          raised
+          onClick={resetFields}
+        >
+          Reset ALL Fields
+        </ResetButton>
+        <Button 
+          raised
+          primary
+          dense
+          onClick={() => updateFields(Object.keys(checked))}
+        >
+          Update Fields
+        </Button>      
+      </ActionBar>
+    </StyledDiv>
+    <StyledFilterList>
+      {columns.map((col, idx) => (
+        <StyledFilterListItem key={idx}>
+          <StyledCheckbox
+            id={`check-${idx}`}
+            checked={checked[col]}
+            onChange={() => {
+              handleCheck(col)
+            }}
+          />
+          <StyledLabel htmlFor={`check-${idx}`}>
+            {col}
+          </StyledLabel>
+        </StyledFilterListItem>
+      ))}
+    </StyledFilterList>
+  </StyledFilterSection>
 )

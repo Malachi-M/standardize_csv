@@ -6,6 +6,11 @@ export const handleCheck = (id) => ({
   payload: id
 })
 
+export const clearAllCheck = () => ({
+  type: 'CLEAR_CHECKBOX',
+  payload: {}
+})
+
 export const exportCSV = (data) => dispatch => {
   const opts = {
     includeEmptyRows: true,
@@ -18,12 +23,14 @@ export const exportCSV = (data) => dispatch => {
   })
 } 
 
-export const setJSONData = (data) => dispatch => {
+export const setJSONData = (name, data) => dispatch => {
   csv().fromString(data)
     .then(json => (
       dispatch({
         type: 'SET_JSON_DATA',
-        payload: json
+        payload: {
+          [name]: json
+        }
       })
     ))
 }

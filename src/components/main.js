@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setCSVData, setJSONData, exportCSV, handleCheck } from '../actions'
+import { setCSVData, setJSONData, exportCSV, handleCheck, clearAllCheck } from '../actions'
 import Upload from './upload'
 import Editor from './editor'
 import styled, { css } from 'styled-components'
@@ -38,7 +38,8 @@ class Main extends Component {
   }
 
   render() {
-    const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck } = this.props
+    const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck, clearAllCheck } = this.props
+    console.log('JSON DATA in <MAIN />',jsonData)
     return (
       <React.Fragment>
         <StyledHeader>
@@ -54,6 +55,7 @@ class Main extends Component {
               data={jsonData}
               checked={checked}
               handleCheck={handleCheck}
+              clearAllCheck={clearAllCheck}
               setCsvData={setCSVData}
               setJSONData={setJSONData}
             />
@@ -79,5 +81,6 @@ export default connect(mapStateToProps, {
   setCSVData,
   setJSONData,
   exportCSV,
-  handleCheck
+  handleCheck,
+  clearAllCheck
 })(Main)

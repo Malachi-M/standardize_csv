@@ -13,15 +13,24 @@ export default (state={ checked: {}}, action) => {
           [action.payload]: !state.checked[action.payload]
         }
       }
+    case 'CLEAR_CHECKBOX':
+      return {
+        ...state,
+        checked: {}
+      }
     case 'SET_CSV_DATA':
       return {
         ...state,
         csvData: action.payload
       }
     case 'SET_JSON_DATA':
+      console.log('Reducer Set_JSON_DATA',action.payload)
       return {
         ...state,
-        jsonData: action.payload
+        jsonData: {
+          ...state.jsonData,
+          ...action.payload
+        }
       }
     default:
       return state

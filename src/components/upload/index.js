@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import styled, { css } from 'styled-components'
-import CSVIcon from '../icons/csv-icon'
+import CSVIcon from '../icons/csv-svg'
 import ActionBar from '../action-bar'
 
 const StyledSection = styled.section`
@@ -64,12 +64,13 @@ export default class Upload extends Component {
 
   onDrop = (acceptedFiles) => {
     acceptedFiles.forEach(file => {
+      console.log('accepted file before FileReader', file)
       const reader = new FileReader()
       reader.onload = () => {
         const fileAsBinaryString = reader.result
         // do whatever you want with the file content
         this.props.setCSVData(fileAsBinaryString)
-        this.props.setJSONData(fileAsBinaryString)
+        this.props.setJSONData(file.name, fileAsBinaryString)
       };
       reader.onabort = () => console.log('file reading was aborted')
       reader.onerror = () => console.log('file reading has failed')
@@ -92,7 +93,7 @@ export default class Upload extends Component {
           onDragLeave={this.onDragLeave}
         >
           <StyledDiv>
-            <CSVIcon />
+            <CSVIcon fill="hsla(222, 26%, 25%, 1)" />
             <StyledPrompt>
                 Drag and Drop a CSV file or <StyledBrowse>browse</StyledBrowse> for a file to upload</StyledPrompt>
           </StyledDiv>
