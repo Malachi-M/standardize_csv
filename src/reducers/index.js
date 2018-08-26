@@ -24,7 +24,6 @@ export default (state={ checked: {}}, action) => {
         csvData: action.payload
       }
     case 'SET_JSON_DATA':
-      console.log('Reducer Set_JSON_DATA',action.payload)
       return {
         ...state,
         jsonData: {

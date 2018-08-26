@@ -18,7 +18,6 @@ export default class Editor extends Component {
 
   setInitialData = (data) => {
     const files = Object.keys(data)
-    console.log('set initial data in Editor', files.length)
     return (files.length > 1
       ? []
       : this.props.data[files])
@@ -26,7 +25,7 @@ export default class Editor extends Component {
 
   getInitialFields = (data) => (
     Object.keys(data)
-      .map((file, idx, arr) => data[file]
+      .map(file => data[file]
         .map(field => Object.keys(field)))
       .reduce((arr, field) => field
         .reduce((arr, line) => [...arr, ...line],[])

@@ -64,7 +64,6 @@ export default class Upload extends Component {
 
   onDrop = (acceptedFiles) => {
     acceptedFiles.forEach(file => {
-      console.log('accepted file before FileReader', file)
       const reader = new FileReader()
       reader.onload = () => {
         const fileAsBinaryString = reader.result

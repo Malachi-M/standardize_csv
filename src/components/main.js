@@ -39,7 +39,6 @@ class Main extends Component {
 
   render() {
     const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck, clearAllCheck } = this.props
-    console.log('JSON DATA in <MAIN />',jsonData)
     return (
       <React.Fragment>
         <StyledHeader>

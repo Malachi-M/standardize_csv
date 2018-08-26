@@ -25,6 +25,7 @@ export const StyledList = styled.ul`
   flex-wrap: wrap;
 `
 export const StyledH1 = styled.h1`
-  margin: 0;
   line-height: 1.5;
+  font-weight: 500;
+  margin: 0;
 `

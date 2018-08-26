@@ -6,7 +6,8 @@ import { Button } from 'styled-material-components'
 import { StyledFileSection, StyledH1 } from '../styled-components'
 import styled from 'styled-components'
 
-const FileNameH1 = styled(StyledH1)`
+
+const FileNameSpan = styled.span`
   width: 100%;
   max-width: 20em;
   overflow-x: hidden;
@@ -18,7 +19,10 @@ export default ({columns, data, headers, filename}) => (
   <StyledFileSection height={'50vh'}>
     <header>
       <ActionBar opposite>
-        <FileNameH1>{filename}</FileNameH1>
+        <div>
+          <StyledH1>File Name</StyledH1>
+          <FileNameSpan>{filename}</FileNameSpan>
+        </div>
         <DownloadLink 
           raised
           accent
