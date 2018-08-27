@@ -26,6 +26,9 @@ const StyledH1 = styled.h1`
   `}
 `
 
+/**
+ * Renders either the upload zone or the editor if data is already uploaded.
+ */
 class Main extends Component {
   state = {
     isDataUploaded: false

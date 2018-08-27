@@ -4,6 +4,9 @@ import { Button } from 'styled-material-components'
 import SingleFile from '../preview/single-file'
 import MultiFile from '../preview/multi-file'
 
+/**
+ * Smart component that provides the functionality for its child components.
+ */
 export default class Editor extends Component {
   constructor(props) {
     super(props)
@@ -12,9 +15,18 @@ export default class Editor extends Component {
       columns: this.getInitialFields(this.props.data),
       headers: this.getInitialFields(this.props.data).map(field => ({id: field, display: field})),
       initialData: this.setInitialData(this.props.data),
-      data: this.setInitialData(this.props.data)
+      data: this.setInitialData(this.props.data),
+      grid: true
     }
   }
+
+  /**
+   * TODO:
+   * [x] On Grid Click set the data so that the single file component
+   * is rendered.
+   * [] On reset fields click the multi file grid should be rendered. 
+   * [] 
+   */
 
   setInitialData = (data) => {
     const files = Object.keys(data)
@@ -23,6 +35,23 @@ export default class Editor extends Component {
       : this.props.data[files])
   }
 
+  /**
+   * getInitialFields() is written in a functional design. The same
+   * functionality can easily be completed with the following:
+   * ```
+   *  getInitialFields = (filesObject) => {
+   *    let uniqueKeys = new Set()
+   *    for (let file in filesObject) {
+   *      filesObject[file].forEach((row) => {
+   *        Object.keys(row).forEach(value => {
+   *          uniqueKeys.add(value)
+   *        })
+   *      })
+   *    }
+   *    return [...uniqueKeys]
+   *  }
+   * ```
+   */
   getInitialFields = (data) => (
     Object.keys(data)
       .map(file => data[file]
@@ -59,9 +88,14 @@ export default class Editor extends Component {
     })
   }
 
+  fileGridClick = (file) => {
+    this.setInitialData(this.props.data[file])
+    this.setState((prevState, props) => ({grid: false}))
+  }
+
   render() {
     const { checked, handleCheck } = this.props
-    const { columns, data, headers } = this.state
+    const { columns, data, headers, grid } = this.state
     const filenames = Object.keys(this.props.data)
     return (
       <React.Fragment>
@@ -72,8 +106,15 @@ export default class Editor extends Component {
           handleCheck={handleCheck}
           checked={checked}
         />
-        {filenames.length > 1 
-          ? <MultiFile files={filenames} data={data} headers={headers} />
+        {filenames.length > 1 && grid
+          ? <MultiFile 
+            files={filenames}
+            data={data}
+            headers={headers}
+            columns={columns}
+            onGridClick={this.fileGridClick}
+            grid
+          />
           : <SingleFile columns={columns} data={data} headers={headers} filename={filenames}/>
         }
       </React.Fragment>

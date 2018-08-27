@@ -5,7 +5,13 @@ import ActionBar from '../action-bar'
 import DownloadLink from 'react-csv-creator'
 import { StyledFileSection } from '../styled-components'
 
-export default ({data, headers, files}) => (
+/**
+ * Component to render UI when multiple files are uploaded.
+ * Rendrs a grid and a button to download all files. 
+ * TODO: It will provide an option to download multiple files
+ * that have been updated.
+ */
+export default ({data, headers, files, onGridClick}) => (
   <StyledFileSection height={'50vh'}> 
     <header>
       <ActionBar end='true'>
@@ -25,6 +31,6 @@ export default ({data, headers, files}) => (
         </DownloadLink>
       </ActionBar> 
     </header>
-    <FileGrid files={files} />
+    <FileGrid files={files} onGridClick={onGridClick} />
   </StyledFileSection>
 )

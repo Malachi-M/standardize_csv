@@ -13,6 +13,9 @@ const StyledActionBar = styled.div`
   `}
 `
 
+/**
+ * Renders a div to hold buttons or other CTA elements
+ */
 export default ({children, opposite, end}) => (
   <StyledActionBar opposite={opposite} end={end}>
     {children}

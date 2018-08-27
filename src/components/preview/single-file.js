@@ -15,6 +15,9 @@ const FileNameSpan = styled.span`
   white-space: nowrap;
 `
 
+/**
+ * Renders a section displaying a table, file name, and button to download updated csv. The table of the data contained within the csv file updates with any changes propogated via the filter component. 
+ */
 export default ({columns, data, headers, filename}) => (
   <StyledFileSection height={'50vh'}>
     <header>

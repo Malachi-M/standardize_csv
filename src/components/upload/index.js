@@ -42,6 +42,9 @@ const StyledBrowse = styled.span`
   `}
 `
 
+/**
+ * Renders a drag and drop file upload zone. The process of uploading involves sending the file data to the redux store.
+ */
 export default class Upload extends Component {
   constructor(props) {
     super(props)

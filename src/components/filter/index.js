@@ -35,6 +35,10 @@ const ResetButton = styled(Button)`
   margin-right: 1.25em;
 `
 
+/**
+ * Renders a section containing a list of checkboxes
+ * for each csv column header
+ */
 export default ({
   updateFields,
   resetFields,
