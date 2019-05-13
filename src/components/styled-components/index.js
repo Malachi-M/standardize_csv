@@ -13,7 +13,7 @@ export const TableContainer = styled.div`
   margin: 1.5rem auto 0;
   overflow: auto;
   width: 100%;
-  height: calc(100% - 3.75em);
+  height: calc(100% - 4.75em);
 `
 export const StyledFileSection = StyledFilterSection.extend`
   height: ${props => props.height}
