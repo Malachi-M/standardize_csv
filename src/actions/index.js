@@ -1,3 +1,7 @@
+/**
+ * With a more complex application these actions will be split into their respective files.
+ */
+
 import csv from 'csvtojson/v2'
 import { parse } from 'json2csv'
 
@@ -16,12 +20,12 @@ export const exportCSV = (data) => dispatch => {
     includeEmptyRows: true,
     unwind: true
   }
-  const csv = parse(data,opts)
+  const csv = parse(data, opts)
   dispatch({
     type: 'CSV_TO_EXPORT',
     payload: csv
   })
-} 
+}
 
 export const setJSONData = (name, data) => dispatch => {
   csv().fromString(data)
@@ -34,7 +38,6 @@ export const setJSONData = (name, data) => dispatch => {
       })
     ))
 }
-
 
 export const setCSVData = data => ({
   type: 'SET_CSV_DATA',

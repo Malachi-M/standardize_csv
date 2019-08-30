@@ -83,7 +83,7 @@ export default class Upload extends Component {
 
   render() {
     const { dropzoneActive } = this.state
-    
+
     return (
       <StyledSection>
         <ActionBar>
@@ -97,12 +97,10 @@ export default class Upload extends Component {
           <StyledDiv>
             <CSVIcon fill="hsla(222, 26%, 25%, 1)" />
             <StyledPrompt>
-                Drag and Drop a CSV file or <StyledBrowse>browse</StyledBrowse> for a file to upload</StyledPrompt>
+              Drag and Drop a CSV file or <StyledBrowse>browse</StyledBrowse> for a file to upload</StyledPrompt>
           </StyledDiv>
         </StyledDropzone>
       </StyledSection>
     )
   }
 }
-
-

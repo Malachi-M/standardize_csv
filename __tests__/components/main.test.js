@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store'
 import Main from '../../src/components/main'
 
 const mockStore = configureStore()
-const initialStore = {
+const initialState = {
 
 }
 

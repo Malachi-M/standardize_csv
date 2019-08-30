@@ -1,5 +1,9 @@
-export default (state={ checked: {}}, action) => {
-  switch(action.type) {
+/**
+ * As complexity of this application grows, reducers will be split into their respective files
+ */
+
+export default (state = { checked: {} }, action) => {
+  switch (action.type) {
     case 'CSV_TO_EXPORT':
       return {
         ...state,

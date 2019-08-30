@@ -1,39 +1,30 @@
 import React from 'react'
-
-
 /**
  * Scaffold for provding multi file download functionality.
  * TODO: complete logic required
  */
 export default ({
-    disabled,
-    filenames,
-    datasets,
-    children,
-    text,
-    className
-  }) => {
+  disabled,
+  filenames,
+  datasets,
+  children,
+  text,
+  className
+}) => {
+  const formatData = () => { }
 
-    const formatData = () => {
+  const downLoadCSVFiles = () => { }
 
-    }
+  const handleClick = () => { }
 
-    const downLoadCSVFiles = () => {
-
-    }
-
-    const handleClick = () => {
-
-    }
-
-    return (
-      children 
-        ? children
-        : <button
-          onClick={disabled ? null : handleClick}
-          className={className}
-        >
-          {text}
-        </button>
-    )
-  }
+  return (
+    children
+      ? children
+      : <button
+        onClick={disabled ? null : handleClick}
+        className={className}
+      >
+        {text}
+      </button>
+  )
+}

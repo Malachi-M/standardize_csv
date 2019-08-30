@@ -19,7 +19,7 @@ const HeaderCell = styled.th`
   border-bottom: 1px solid rgba(224,224,224,1);
 `
 
-export default ({headerData}) => (
+export default ({ headerData }) => (
   <TableHeader>
     <HeaderRow>
       {

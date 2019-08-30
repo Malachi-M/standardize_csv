@@ -18,7 +18,7 @@ const TableCell = styled.td`
   border-bottom: 1px solid rgba(224,224,224,1);
 `
 
-export default ({rowData}) => (
+export default ({ rowData }) => (
   <TableRow>
     {
       Object.keys(rowData).map((cellData, idx) => <TableCell key={idx}>{rowData[cellData]}</TableCell>)

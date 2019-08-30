@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/rootReducer'
@@ -10,7 +10,7 @@ import Main from './components/main'
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 const theme = {
   maxWidth: '62vw',
-  primary:'#303a52',
+  primary: '#303a52',
   dark_primary: '#081429',
   light_primary: '#5b647e',
   accent: '#2ae746',
@@ -36,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

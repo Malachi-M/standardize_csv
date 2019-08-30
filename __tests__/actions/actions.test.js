@@ -23,7 +23,4 @@ describe('actions', () => {
       expect(store.getActions()).toEqual(expectedActions)
     })
   })
-
-  
 })
-

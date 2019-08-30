@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { TableContainer } from '../styled-components'
 import TableHeading from './table-heading'
@@ -17,8 +17,6 @@ export default class JSONTable extends Component {
 
   render() {
     const { data, columns } = this.props
-    
-
     return (
       <TableContainer>
         <Table>

@@ -13,7 +13,7 @@ export default class Editor extends Component {
     this.state = {
       initialFields: this.getInitialFields(this.props.data),
       columns: this.getInitialFields(this.props.data),
-      headers: this.getInitialFields(this.props.data).map(field => ({id: field, display: field})),
+      headers: this.getInitialFields(this.props.data).map(field => ({ id: field, display: field })),
       initialData: this.setInitialData(this.props.data),
       data: this.setInitialData(this.props.data),
       grid: true
@@ -57,10 +57,10 @@ export default class Editor extends Component {
       .map(file => data[file]
         .map(field => Object.keys(field)))
       .reduce((arr, field) => field
-        .reduce((arr, line) => [...arr, ...line],[])
-      , [])
+        .reduce((arr, line) => [...arr, ...line], [])
+        , [])
       .filter((field, idx, arr) => arr.indexOf(field) === idx)
-    )
+  )
 
   resetFields = () => {
     this.setState((prevState, props) => ({
@@ -75,10 +75,10 @@ export default class Editor extends Component {
       const filterFields = field => fields.includes(field) && props.checked[field]
       const updatedColumns = prevState.columns.filter(filterFields)
       const updatedHeaders = prevState.headers.filter(field => fields.includes(field.id) && props.checked[field.id])
-      const updatedData = prevState.data.map(datem => { 
+      const updatedData = prevState.data.map(datem => {
         return Object.keys(datem).filter(filterFields)
-          .map(key => ({[key]: datem[key]}))
-          .reduce((acc, curr) => ({...acc, ...curr}),{})     
+          .map(key => ({ [key]: datem[key] }))
+          .reduce((acc, curr) => ({ ...acc, ...curr }), {})
       })
       return {
         columns: updatedColumns,
@@ -90,7 +90,7 @@ export default class Editor extends Component {
 
   fileGridClick = (file) => {
     this.setInitialData(this.props.data[file])
-    this.setState((prevState, props) => ({grid: false}))
+    this.setState((prevState, props) => ({ grid: false }))
   }
 
   render() {
@@ -107,7 +107,7 @@ export default class Editor extends Component {
           checked={checked}
         />
         {filenames.length > 1 && grid
-          ? <MultiFile 
+          ? <MultiFile
             files={filenames}
             data={data}
             headers={headers}
@@ -115,7 +115,7 @@ export default class Editor extends Component {
             onGridClick={this.fileGridClick}
             grid
           />
-          : <SingleFile columns={columns} data={data} headers={headers} filename={filenames}/>
+          : <SingleFile columns={columns} data={data} headers={headers} filename={filenames} />
         }
       </React.Fragment>
     )

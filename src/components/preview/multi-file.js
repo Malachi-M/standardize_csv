@@ -11,25 +11,25 @@ import { StyledFileSection } from '../styled-components'
  * TODO: It will provide an option to download multiple files
  * that have been updated.
  */
-export default ({data, headers, files, onGridClick}) => (
-  <StyledFileSection height={'50vh'}> 
+export default ({ data, headers, files, onGridClick }) => (
+  <StyledFileSection height={'50vh'}>
     <header>
       <ActionBar end='true'>
-        <DownloadLink 
+        <DownloadLink
           raised
           accent
           filename='test.csv'
           headers={headers}
           rows={data}
         >
-          <Button 
+          <Button
             raised
             accent
           >
             Export All CSV Files
           </Button>
         </DownloadLink>
-      </ActionBar> 
+      </ActionBar>
     </header>
     <FileGrid files={files} onGridClick={onGridClick} />
   </StyledFileSection>
