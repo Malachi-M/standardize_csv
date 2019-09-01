@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import FilterColumns from '../filterColumns'
-import { Button } from 'styled-material-components'
 import SingleFile from '../preview/single-file'
 import MultiFile from '../preview/multi-file'
 
@@ -25,7 +24,6 @@ export default class Editor extends Component {
    * [x] On Grid Click set the data so that the single file component
    * is rendered.
    * [] On reset fields click the multi file grid should be rendered. 
-   * [] 
    */
 
   componentDidMount() {
@@ -109,7 +107,7 @@ export default class Editor extends Component {
     const { checked, handleCheck } = this.props
     const { columns, data, headers, grid } = this.state
     const filenames = Object.keys(this.props.data)
-    console.log('checked: ', checked)
+    console.log('filenames: ', filenames)
     return (
       <React.Fragment>
         <FilterColumns
@@ -128,7 +126,12 @@ export default class Editor extends Component {
             onGridClick={this.fileGridClick}
             grid
           />
-          : <SingleFile columns={columns} data={data} headers={headers} filename={filenames} />
+          : <SingleFile
+            columns={columns}
+            data={data}
+            headers={headers}
+            filename={filenames}
+          />
         }
       </React.Fragment>
     )

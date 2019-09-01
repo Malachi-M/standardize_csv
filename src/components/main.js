@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setCSVData, setJSONData, exportCSV, handleCheck, clearAllCheck } from '../actions'
+import { setCSVData, setJSONData, exportCSV, handleCheck, clearAllCheck } from '../store/actions'
 import styled, { withTheme, css } from 'styled-components'
 
 // Component Imports
 import Header from './header'
 import Upload from './upload'
 import Editor from './editor'
-import { thisExpression } from '@babel/types';
 
 const StyledMain = styled.main`
   padding: 0 5em;

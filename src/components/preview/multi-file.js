@@ -1,9 +1,11 @@
 import React from 'react'
-import FileGrid from '../file-grid'
 import { Button } from 'styled-material-components'
-import ActionBar from '../action-bar'
-import DownloadLink from 'react-csv-creator'
 import { StyledFileSection } from '../styled-components'
+import DownloadLink from 'react-csv-creator'
+
+// Component imports
+import FileGrid from '../file-grid'
+import ActionBar from '../action-bar'
 
 /**
  * Component to render UI when multiple files are uploaded.

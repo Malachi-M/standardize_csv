@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { TableContainer } from '../styled-components'
+import { TableContainer, Table } from './styled'
+
+// Component imports
 import TableHeading from './table-heading'
 import Row from './rows'
-
-const Table = styled.table``
 
 /**
  * Renders a simple json based table. Takes data and meta table headings via the columns property

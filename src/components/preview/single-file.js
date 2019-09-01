@@ -1,19 +1,12 @@
 import React from 'react'
-import Table from '../table'
-import ActionBar from '../action-bar'
 import DownloadLink from 'react-csv-creator'
 import { Button } from 'styled-material-components'
 import { StyledFileSection, StyledH1 } from '../styled-components'
-import styled from 'styled-components'
+import { FileNameSpan } from './styled'
 
-
-const FileNameSpan = styled.span`
-  width: 100%;
-  max-width: 20em;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
+// Component imports
+import ActionBar from '../action-bar'
+import Table from '../table'
 
 /**
  * Renders a section displaying a table, file name, and button to download updated csv. The table of the data contained within the csv file updates with any changes propogated via the filter component. 
