@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import configureStore from 'redux-mock-store'
 
-import Main from '../../src/components/main'
+import Main from '../../components/main'
 
 const mockStore = configureStore()
 const initialState = {
