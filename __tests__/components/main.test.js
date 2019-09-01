@@ -13,7 +13,6 @@ const initialState = {
 const store = mockStore(initialState)
 
 describe('<Main />', () => {
-
   describe('render()', () => {
     test('renders the component', () => {
       const wrapper = shallow(<Main />)
@@ -23,4 +22,3 @@ describe('<Main />', () => {
     })
   })
 })
-

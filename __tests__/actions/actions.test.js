@@ -12,15 +12,14 @@ describe('actions', () => {
 
   describe('handleCheck', () => {
     test('Dispatches the correct action and payload', () => {
-      const expectedActions = [
-        {
-          'payload': 'total-age',
-          'type': 'SET_CHECKBOX'
-        }
-      ]
+      const expectedPayload = {
+        'payload': 'total-age',
+        'type': 'SET_CHECKBOX'
+      }
+
 
       store.dispatch(actions.handleCheck('total-age'))
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedPayload)
     })
   })
 })

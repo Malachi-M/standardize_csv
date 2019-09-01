@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Filter from '../filter'
+import FilterColumns from '../filterColumns'
 import { Button } from 'styled-material-components'
 import SingleFile from '../preview/single-file'
 import MultiFile from '../preview/multi-file'
@@ -11,11 +11,11 @@ export default class Editor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initialFields: this.getInitialFields(this.props.data),
-      columns: this.getInitialFields(this.props.data),
-      headers: this.getInitialFields(this.props.data).map(field => ({ id: field, display: field })),
-      initialData: this.setInitialData(this.props.data),
-      data: this.setInitialData(this.props.data),
+      initialFields: [],
+      columns: [],
+      headers: [],
+      initialData: [],
+      data: [],
       grid: true
     }
   }
@@ -27,6 +27,18 @@ export default class Editor extends Component {
    * [] On reset fields click the multi file grid should be rendered. 
    * [] 
    */
+
+  componentDidMount() {
+    const { data } = this.props
+
+    this.setState(() => ({
+      initialFields: this.getInitialFields(data),
+      columns: this.getInitialFields(data),
+      headers: this.getInitialFields(data).map(field => ({ id: field, display: field })),
+      initialData: this.setInitialData(data),
+      data: this.setInitialData(data),
+    }))
+  }
 
   setInitialData = (data) => {
     const files = Object.keys(data)
@@ -97,9 +109,10 @@ export default class Editor extends Component {
     const { checked, handleCheck } = this.props
     const { columns, data, headers, grid } = this.state
     const filenames = Object.keys(this.props.data)
+    console.log('checked: ', checked)
     return (
       <React.Fragment>
-        <Filter
+        <FilterColumns
           updateFields={this.updateFields}
           resetFields={this.resetFields}
           columns={columns}

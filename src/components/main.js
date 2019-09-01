@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setCSVData, setJSONData, exportCSV, handleCheck, clearAllCheck } from '../actions'
+import styled, { withTheme, css } from 'styled-components'
+
+// Component Imports
+import Header from './header'
 import Upload from './upload'
 import Editor from './editor'
-import styled, { css } from 'styled-components'
+import { thisExpression } from '@babel/types';
 
 const StyledMain = styled.main`
   padding: 0 5em;
 `
-const StyledHeader = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3.5em 0;
-`
+
 const StyledH1 = styled.h1`
   font-size: 4em;
-  letter-spacing: 0.09375rem;
   font-weight: 400;
-  color: rgb(48, 58, 82);
-  margin: 0;
+  letter-spacing: 0.09375rem;
+  margin: 0 0 0.5em 0;
+  text-align: center;
 
   ${props => props.theme && css`
-    color: ${props.theme.dark_primary}
+    color: ${props.theme.light_primary}
   `}
 `
 
@@ -40,16 +39,26 @@ class Main extends Component {
     }
   }
 
+  resetView = () => {
+    this.setState({
+      isDataUploaded: false
+    })
+  }
+
   render() {
-    const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck, clearAllCheck } = this.props
+    const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck, clearAllCheck, theme } = this.props
+
     return (
       <React.Fragment>
-        <StyledHeader>
+        <Header
+          reset={this.resetView}
+          hasData={this.state.isDataUploaded}
+          fillColor={theme.background}
+        />
+        <StyledMain>
           <StyledH1>
             Standardize CSV
           </StyledH1>
-        </StyledHeader>
-        <StyledMain>
           {this.state.isDataUploaded
             ? <Editor
               csvExport={csvExport}
@@ -85,4 +94,4 @@ export default connect(mapStateToProps, {
   exportCSV,
   handleCheck,
   clearAllCheck
-})(Main)
+})(withTheme(Main))
