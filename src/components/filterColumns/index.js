@@ -56,7 +56,7 @@ export default ({
             onClick={resetFields}
           >
             Reset ALL Fields
-        </ResetButton>
+      </ResetButton>
           <Button
             raised
             primary
@@ -64,7 +64,7 @@ export default ({
             onClick={() => updateFields(Object.keys(checked))}
           >
             Update Fields
-        </Button>
+      </Button>
         </ActionBar>
       </StyledDiv>
       <StyledFilterList>

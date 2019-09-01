@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
-import './App.css'
 import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/rootReducer'
-import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-material-components'
 import Main from './components/main'
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware))
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunkMiddleware)
+)
 const theme = {
   maxWidth: '62vw',
+  background: '#f4f4f4',
   primary: '#303a52',
   dark_primary: '#081429',
   light_primary: '#5b647e',
-  accent: '#2ae746',
+  accent: '#67ec7a',
   warning: '#ff512f',
   secondary: '#90e1ff',
   dark_secondary: '#c4ffff',

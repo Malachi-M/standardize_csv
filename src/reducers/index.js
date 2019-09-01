@@ -2,7 +2,10 @@
  * As complexity of this application grows, reducers will be split into their respective files
  */
 
-export default (state = { checked: {} }, action) => {
+const initialState = {
+  checked: {}
+}
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'CSV_TO_EXPORT':
       return {
@@ -20,7 +23,12 @@ export default (state = { checked: {} }, action) => {
     case 'CLEAR_CHECKBOX':
       return {
         ...state,
-        checked: {}
+        checked: {
+          ...Object.keys(state.checked).reduce((checked, col) => {
+            checked[col] = false
+            return checked
+          }, {})
+        }
       }
     case 'SET_CSV_DATA':
       return {
