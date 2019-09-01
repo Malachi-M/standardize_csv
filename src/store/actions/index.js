@@ -39,6 +39,7 @@ export const exportCSV = (data) => {
 }
 
 export const setJSONData = (name, data) => dispatch => {
+  console.log('name, data: ', name, data)
   csv().fromString(data)
     .then(json => (
       dispatch({
