@@ -55,7 +55,7 @@ const Header = ({ hasData, reset, fillColor }) => {
     <StyledHeader>
       <StyledNav>
         <StyledNavItem>
-          <CSVIcon onClick={reset} fill={fillColor} width="48" height="48" />
+          <CSVIcon onClick={reset} fill={fillColor} width='48' height='48' />
         </StyledNavItem>
         {hasData && <StyledNavItem>
           <StyledUploadBtn
