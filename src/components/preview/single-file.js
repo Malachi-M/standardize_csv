@@ -22,7 +22,7 @@ export default ({ columns, data, headers, filename }) => (
         <DownloadLink
           raised
           accent
-          filename={`standardized_${filename[0]}`}
+          filename={`standardized_${filename[0].split('.')[0]}`}
           headers={headers}
           rows={data}
         >
