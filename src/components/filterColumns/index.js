@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'styled-material-components'
-import { StyledFilterSection, StyledH1 } from '../styled-components'
+import { StyledFilterSection, StyledH1 } from '../common-styled-components'
 import { StyledCheckbox, StyledLabel, StyledFilterList, StyledFilterListItem, StyledDiv, ResetButton } from './styled'
 
 // Component imports

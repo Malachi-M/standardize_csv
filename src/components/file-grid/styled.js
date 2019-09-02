@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button } from 'styled-material-components'
-import { StyledList } from '../styled-components'
+import { StyledList } from '../common-styled-components'
 import CSVIcon from '../icons/csv-svg'
 
 export const StyledButton = styled(Button)`

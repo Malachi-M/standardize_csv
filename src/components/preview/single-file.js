@@ -1,7 +1,7 @@
 import React from 'react'
 import DownloadLink from 'react-csv-creator'
 import { Button } from 'styled-material-components'
-import { StyledFileSection, StyledH1 } from '../styled-components'
+import { StyledFileSection, StyledH1 } from '../common-styled-components'
 import { FileNameSpan } from './styled'
 
 // Component imports

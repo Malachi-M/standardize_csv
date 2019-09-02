@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Button, Checkbox } from 'styled-material-components'
-import { StyledList } from '../styled-components'
+import { StyledList } from '../common-styled-components'
 
 
 export const StyledCheckbox = styled(Checkbox)`

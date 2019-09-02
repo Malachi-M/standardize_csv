@@ -107,7 +107,7 @@ export default class Editor extends Component {
     const { checked, handleCheck } = this.props
     const { columns, data, headers, grid } = this.state
     const filenames = Object.keys(this.props.data)
-    console.log('filenames: ', filenames)
+
     return (
       <React.Fragment>
         <FilterColumns
