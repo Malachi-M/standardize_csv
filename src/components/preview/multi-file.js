@@ -9,7 +9,7 @@ import ActionBar from '../action-bar'
 
 /**
  * Component to render UI when multiple files are uploaded.
- * Rendrs a grid and a button to download all files. 
+ * Rendrs a grid and a button to download all files.
  * TODO: It will provide an option to download multiple files
  * that have been updated.
  */
