@@ -39,6 +39,7 @@ class Main extends Component {
   }
 
   resetView = () => {
+    this.props.clearAllCheck()
     this.setState({
       isDataUploaded: false
     })
@@ -46,6 +47,7 @@ class Main extends Component {
 
   render() {
     const { csvData, jsonData, setCSVData, setJSONData, csvExport, checked, handleCheck, clearAllCheck, theme } = this.props
+    console.log('has data: ', this.state.isDataUploaded)
 
     return (
       <React.Fragment>
