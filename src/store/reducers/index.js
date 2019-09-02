@@ -11,12 +11,13 @@ import {
 } from '../constants'
 
 const initialState = {
-  checked: {}
+  checked: {},
+  jsonData: []
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CSV_TO_EXPORT:
+    case CSV_TO_EXPORT: // Not currently implemented
       return {
         ...state,
         csvExport: action.payload
@@ -47,10 +48,10 @@ export default (state = initialState, action) => {
     case SET_JSON_DATA:
       return {
         ...state,
-        jsonData: {
+        jsonData: [
           ...state.jsonData,
           ...action.payload
-        }
+        ]
       }
     default:
       return state

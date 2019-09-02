@@ -3,7 +3,7 @@
  */
 
 import csv from 'csvtojson/v2'
-import { parse } from 'json2csv'
+import { parseAsync } from 'json2csv'
 import {
   CLEAR_CHECKBOX,
   CSV_TO_EXPORT,
@@ -24,31 +24,34 @@ export const clearAllCheck = () => ({
 /**
  * exportCSV is not currently implemented
  */
-export const exportCSV = (data) => {
-  return dispatch => {
-    const opts = {
-      includeEmptyRows: true,
-      unwind: true
-    }
-    const csv = parse(data, opts)
-    dispatch({
-      type: CSV_TO_EXPORT,
-      payload: csv
+export const exportCSV = (
+  data,
+  opts
+) => dispatch => {
+  const fields = Object.keys(data[0])
+
+  return parseAsync(data, { ...opts, fields })
+    .then((csv) => {
+      dispatch({
+        type: CSV_TO_EXPORT,
+        payload: csv
+      })
     })
-  }
+    .catch(err => console.error(err))
+  // BUG with error throwing: https://github.com/zemirco/json2csv/pull/412
 }
 
 export const setJSONData = (name, data) => dispatch => {
-  console.log('name, data: ', name, data)
-  csv().fromString(data)
-    .then(json => (
+  return csv({ checkType: true }).fromString(data)
+    .then(json => {
       dispatch({
         type: SET_JSON_DATA,
         payload: {
           [name]: json
         }
       })
-    ))
+    })
+    .catch(err => console.error(err))
 }
 
 export const setCSVData = data => ({
